@@ -1,0 +1,104 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f2f5;
+    color: #333;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    margin: 0;
+  }
+  
+  /* Estilos principales de la aplicación */
+  .App {
+    width: 90%;
+    max-width: 600px;
+    margin: auto;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+  }
+  
+  header h1 {
+    font-size: 24px;
+    color: #333;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  /* Estilos para el formulario de turnos */
+  form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  label {
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #555;
+  }
+  
+  input[type="date"] {
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    margin-bottom: 20px;
+    outline: none;
+  }
+  
+  input[type="date"]:focus {
+    border-color: #007bff;
+  }
+  
+  /* Botones de horarios */
+  .button-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 10px;
+  }
+  
+  button {
+    padding: 10px 15px;
+    font-size: 14px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  button.available {
+    background-color: #007bff;
+    color: white;
+  }
+  
+  button.unavailable {
+    background-color: #ccc;
+    color: #666;
+    cursor: not-allowed;
+  }
+  
+  button.available:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Adaptabilidad */
+  @media (max-width: 600px) {
+    .App {
+      padding: 15px;
+    }
+  
+    header h1 {
+      font-size: 20px;
+    }
+  }
+  
