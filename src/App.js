@@ -7,26 +7,24 @@ const App = () => {
   const [horarios, setHorarios] = useState([]);
   const [horarioSeleccionado, setHorarioSeleccionado] = useState(null);
 
-  // Obtener los horarios disponibles de la base de datos cuando cambia la fecha
-  useEffect(() => {
-    const obtenerHorarios = async () => {
-      try {
-        // Simulación de la llamada al backend (actualiza la URL a la que corresponda)
-        const response = await axios.get(`http://localhost:3001/horarios?fecha=${fecha}`);
-        setHorarios(response.data); // Ajusta esto según el formato de respuesta de tu API
-      } catch (error) {
-        console.error("Error al obtener los horarios:", error);
-      }
-    };
+  // Función para obtener los horarios disponibles para la fecha seleccionada
+  const obtenerHorarios = async (fechaSeleccionada) => {
+    try {
+      const response = await axios.get(`http://localhost:8080/api/horarios?fecha=${fechaSeleccionada}`);
+      console.log("Horarios recibidos:", response.data); // Verificar que se reciban los datosnpm install cors
 
-    if (fecha) {
-      obtenerHorarios();
+      setHorarios(response.data);  // Almacena los horarios en el estado
+    } catch (error) {
+      console.error("Error al obtener los horarios:", error);
     }
-  }, [fecha]);
+  };
 
+  // Maneja el cambio de fecha y solicita los horarios disponibles al backend
   const handleFechaChange = (e) => {
-    setFecha(e.target.value);
-    setHorarioSeleccionado(null); // Reinicia el horario seleccionado cuando cambia la fecha
+    const fechaSeleccionada = e.target.value;
+    setFecha(fechaSeleccionada);
+    setHorarioSeleccionado(null); // Reinicia el horario seleccionado
+    obtenerHorarios(fechaSeleccionada); // Llama a la función para cargar los horarios
   };
 
   const handleConfirmar = () => {
@@ -35,7 +33,6 @@ const App = () => {
       return;
     }
 
-    // Aquí puedes agregar la lógica para enviar la solicitud al backend
     alert(`Turno confirmado para el ${fecha} a las ${horarioSeleccionado}`);
   };
 
@@ -58,12 +55,12 @@ const App = () => {
             {horarios.length > 0 ? (
               horarios.map((horario) => (
                 <button
-                  key={horario}
+                  key={horario.id}
                   type="button"
-                  className={`available ${horario === horarioSeleccionado ? "selected" : ""}`}
-                  onClick={() => setHorarioSeleccionado(horario)}
+                  className={`available ${horario.id === horarioSeleccionado ? "selected" : ""}`}
+                  onClick={() => setHorarioSeleccionado(horario.id)}
                 >
-                  {horario}
+                  {horario.hora}
                 </button>
               ))
             ) : (
@@ -78,6 +75,10 @@ const App = () => {
       </main>
     </div>
   );
+
+  
+
 };
 
 export default App;
+
