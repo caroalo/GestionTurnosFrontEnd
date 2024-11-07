@@ -5,6 +5,7 @@ import Home from "./home";
 import App from "./App";
 import Servicios from "./servicios";
 import Contact from "./contact";
+import Confirmacion from "./confirmacion"
 
 const MainRouter = () => {
   return (
@@ -15,6 +16,7 @@ const MainRouter = () => {
         <Route path="/solicitar-turno" element={<App />} />
         <Route path="/servicios" element={<Servicios />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/confirmacion" element={<Confirmacion />} />
       </Routes>
     </Router>
   );

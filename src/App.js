@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 import "./index.css";
 import Navbar from "./navbar";
 
@@ -7,14 +8,15 @@ const App = () => {
   const [fecha, setFecha] = useState("");
   const [horarios, setHorarios] = useState([]);
   const [horarioSeleccionado, setHorarioSeleccionado] = useState(null);
+  const navigate = useNavigate();
 
   // Función para obtener los horarios disponibles para la fecha seleccionada
   const obtenerHorarios = async (fechaSeleccionada) => {
     try {
       const response = await axios.get(`http://localhost:8080/api/horarios?fecha=${fechaSeleccionada}`);
-      console.log("Horarios recibidos:", response.data); // Verificar que se reciban los datosnpm install cors
+      console.log("Horarios recibidos:", response.data);
 
-      setHorarios(response.data);  // Almacena los horarios en el estado
+      setHorarios(response.data);
     } catch (error) {
       console.error("Error al obtener los horarios:", error);
     }
@@ -24,8 +26,8 @@ const App = () => {
   const handleFechaChange = (e) => {
     const fechaSeleccionada = e.target.value;
     setFecha(fechaSeleccionada);
-    setHorarioSeleccionado(null); // Reinicia el horario seleccionado
-    obtenerHorarios(fechaSeleccionada); // Llama a la función para cargar los horarios
+    setHorarioSeleccionado(null);
+    obtenerHorarios(fechaSeleccionada);
   };
 
   const handleConfirmar = () => {
@@ -34,7 +36,11 @@ const App = () => {
       return;
     }
 
-    alert(`Turno confirmado para el ${fecha} a las ${horarioSeleccionado}`);
+    const codigoReserva = Math.random().toString(36).substring(2, 10).toUpperCase(); // Genera un código de reserva aleatorio
+
+    navigate("/confirmacion", {
+      state: { codigo: codigoReserva, fecha: fecha, horario: horarioSeleccionado }
+    });
   };
 
   return (
@@ -77,10 +83,6 @@ const App = () => {
       </main>
     </div>
   );
-
-  
-
 };
 
 export default App;
-
