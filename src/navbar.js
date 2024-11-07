@@ -11,7 +11,8 @@ const Navbar = () =>{
       <ul>
         <li><Link to="/">🏠Home</Link></li> 
         <li><Link to="/solicitar-turno">📅 Solicitar turno</Link></li> 
-        <li><Link to="/contact">📞Contacto</Link></li>
+        <li><Link to="/servicios">⚙️ Servicios</Link></li> 
+        <li><Link to="/contact">📞 Contacto</Link></li>
       </ul>
     </nav>
   );
