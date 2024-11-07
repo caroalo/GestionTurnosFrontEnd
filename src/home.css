@@ -1,0 +1,28 @@
+h1{
+    font-family: 'Open Sans', sans-serif;
+    font-size: x-large;
+    margin-left: 20%;
+    color: purple;
+  }
+  
+  h2{
+    font-family: 'Open Sans', sans-serif;
+    font-size: large;
+    margin-left: 20%;
+    color: navy;
+  }
+  
+  h3{
+    font-family: 'Open Sans', sans-serif;
+    font-size: medium;
+    color: black;
+    margin-left: 5%;
+  }
+  
+  p {
+    font-family: 'Trebuchet MS', sans-serif;
+    font-size: medium;
+    color: black;
+    margin-left: 5%;
+  } 
+  

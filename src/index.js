@@ -1,12 +1,12 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import App from "./App";
+import Home from "./router";
 import "./index.css"; // Opcional, para estilos básicos
+import MainRouter from "./router";
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById("root")
+
+ReactDOM.render (
+  <MainRouter/>, 
+    document.getElementById("root")
 );
 
