@@ -23,7 +23,7 @@ const Servicios = () => {
 
         {/* Sección 1 */}
         <h2 onClick={() => toggleSection(1)} className="section-title">
-          1. Limpieza General del Hogar <strong>(Ver más)</strong>
+          1. Limpieza General del Hogar
         </h2>
         {activeSection === 1 && (
           <p className="section-content">
