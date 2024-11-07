@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import "./index.css";
+import Navbar from "./navbar";
 
 const App = () => {
   const [fecha, setFecha] = useState("");
@@ -37,6 +38,7 @@ const App = () => {
 
   return (
     <div className="App">
+      <Navbar />
       <header>
         <h1>Solicitud de turno</h1>
       </header>

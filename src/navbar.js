@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from "react-router-dom";
 import "./App"
 import "./index.css";
+import "./navbar.css";
 
 const Navbar = () =>{
   return (
