@@ -6,9 +6,10 @@ const Home = () => {
   return (
     <div>
       <Navbar />
-      <div> 
-        <h1>¡Bienvenido a la Gestión de Turnos de la Doctora ....!</h1> 
-        <img src="path_to_your_image.jpg" alt="Welcome" className="welcome-image" /> 
+      <div className="text-box"> 
+        <h1>Loana Gutierrez </h1>
+        <h2> Servicios de mantenimiento doméstico </h2> 
+        
       </div>
     </div>
   );

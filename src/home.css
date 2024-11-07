@@ -1,3 +1,22 @@
+body {
+    background-image: url('./img/fondoHome.png');
+    background-size: cover;
+    background-position: center;
+    height: 100vh; /* Ajusta según tus necesidades */
+    margin: 0;
+    padding: 0;
+  }  
+
+  .text-box {
+    background-color: white;
+    border-radius: 15px; /* Bordes redondeados */
+    padding: 20px; /* Espacio interno */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra para darle un efecto de elevación */
+    max-width: 600px; /* Ancho máximo del cuadro */
+    margin: 20px auto; /* Centrar el cuadro horizontalmente */
+    text-align: center; /* Centrar el texto */
+  }
+
 h1{
     font-family: 'Open Sans', sans-serif;
     font-size: x-large;
@@ -7,14 +26,15 @@ h1{
   
   h2{
     font-family: 'Open Sans', sans-serif;
-    font-size: large;
-    margin-left: 20%;
-    color: navy;
+    font-size: medium;
+    margin-left: 0%;
+    color: negro;
   }
   
   h3{
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'cambria', sans-serif;
     font-size: medium;
+    font-weight: lighter;
     color: black;
     margin-left: 5%;
   }
