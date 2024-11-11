@@ -10,7 +10,6 @@ const App = () => {
   const [horarioSeleccionado, setHorarioSeleccionado] = useState(null);
   const navigate = useNavigate();
 
-  // Función para obtener los horarios disponibles para la fecha seleccionada
   const obtenerHorarios = async (fechaSeleccionada) => {
     try {
       const response = await axios.get(`http://localhost:8080/api/horarios?fecha=${fechaSeleccionada}`);
@@ -22,7 +21,6 @@ const App = () => {
     }
   };
 
-  // Maneja el cambio de fecha y solicita los horarios disponibles al backend
   const handleFechaChange = (e) => {
     const fechaSeleccionada = e.target.value;
     setFecha(fechaSeleccionada);
@@ -36,10 +34,20 @@ const App = () => {
       return;
     }
 
-    const codigoReserva = Math.random().toString(36).substring(2, 10).toUpperCase(); // Genera un código de reserva aleatorio
+    const codigoReserva = Math.random().toString(36).substring(2, 10).toUpperCase();
+
+    // Formatear la fecha a día-mes-año
+    const fechaFormateada = new Date(fecha).toLocaleDateString('es-ES', {
+      day: '2-digit',
+      month: '2-digit',
+      year: 'numeric'
+    });
+
+    // Encontrar el objeto horario seleccionado por su ID
+    const horarioSeleccionadoObj = horarios.find(h => h.id === horarioSeleccionado);
 
     navigate("/confirmacion", {
-      state: { codigo: codigoReserva, fecha: fecha, horario: horarioSeleccionado }
+      state: { codigo: codigoReserva, fecha: fechaFormateada, horario: horarioSeleccionadoObj.hora }
     });
   };
 
