@@ -1,20 +1,33 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useLocation } from "react-router-dom";
+import axios from "axios";
 import Navbar from "./navbar";
 import "./home.css";
-
 
 const Confirmacion = () => {
   const location = useLocation();
   const { codigo, fecha, horario } = location.state;
+
+  useEffect(() => {
+    const guardarConfirmacion = async () => {
+      try {
+        await axios.post('http://localhost:8080/api/confirmaciones', { codigo, fecha, horario });
+        console.log('Confirmación guardada en la base de datos');
+      } catch (error) {
+        console.error('Error al guardar la confirmación:', error);
+      }
+    };
+
+    guardarConfirmacion();
+  }, [codigo, fecha, horario]);
 
   const fechaFormateada = new Date(fecha).toLocaleDateString('es-ES', 
     { day: '2-digit', 
         month: '2-digit', 
         year: 'numeric' });
 
-   // Asegurando que horario es una cadena y luego aplicando padStart 
-   const horarioFormateado = String(horario).padStart(5, '0');
+  const horarioFormateado = String(horario).padStart(5, '0');
+
   return (
     <div>
         <Navbar />
@@ -26,7 +39,6 @@ const Confirmacion = () => {
       <p><strong>Hora:</strong> {horarioFormateado}</p>
       </div>
     </div>
-
   );
 };
 

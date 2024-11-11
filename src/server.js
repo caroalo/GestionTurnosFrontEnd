@@ -1,42 +1,27 @@
 const express = require('express');
 const cors = require('cors');
-const sqlite3 = require('sqlite3').verbose();
+const bodyParser = require('body-parser');
+const sequelize = require('./src/sequelize'); // Asegúrate de que la conexión a la base de datos esté configurada
 
 const app = express();
-const PORT = 3001;
+const PORT = 8080; // Puerto principal
 
-// Configuración de CORS
 app.use(cors());
+app.use(bodyParser.json());
 
-// Conexión a la base de datos
-const db = new sqlite3.Database('./path_to_your_database.sqlite');
-
-// Ruta para obtener horarios disponibles
-app.get('/horarios', (req, res) => {
-  const { fecha } = req.query;
-
-  if (!fecha) {
-    return res.status(400).json({ error: 'Se requiere la fecha' });
+// Ruta para crear un nuevo turno
+app.post('/api/turnos', async (req, res) => {
+  try {
+    const { codigo, fecha, horario } = req.body;
+    const nuevoTurno = await sequelize.models.turno.create({ codigo, fecha, horario });
+    res.status(201).json(nuevoTurno);
+  } catch (error) {
+    console.error('Error al crear turno:', error);
+    res.status(500).json({ error: 'Error al crear turno' });
   }
-
-  const query = `
-    SELECT hora FROM horarios
-    WHERE fecha = ? AND disponible = 1
-    ORDER BY hora;
-  `;
-
-  db.all(query, [fecha], (err, rows) => {
-    if (err) {
-      console.error('Error al consultar horarios:', err);
-      return res.status(500).json({ error: 'Error al consultar horarios' });
-    }
-
-    const horarios = rows.map(row => row.hora);
-    res.json(horarios);
-  });
 });
 
-// Iniciar el servidor
+// Inicia el servidor
 app.listen(PORT, () => {
   console.log(`Servidor ejecutándose en http://localhost:${PORT}`);
 });

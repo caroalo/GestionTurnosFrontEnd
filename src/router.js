@@ -6,6 +6,7 @@ import App from "./App";
 import Servicios from "./servicios";
 import Contact from "./contact";
 import Confirmacion from "./confirmacion"
+import Confirmaciones from "./confirmaciones"
 
 const MainRouter = () => {
   return (
@@ -17,6 +18,7 @@ const MainRouter = () => {
         <Route path="/servicios" element={<Servicios />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/confirmacion" element={<Confirmacion />} />
+        <Route path="/confirmaciones" element={<Confirmaciones />} />
       </Routes>
     </Router>
   );

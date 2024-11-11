@@ -28,7 +28,7 @@ const App = () => {
     obtenerHorarios(fechaSeleccionada);
   };
 
-  const handleConfirmar = () => {
+  const handleConfirmar = async () => {
     if (!horarioSeleccionado) {
       alert("Por favor, selecciona un horario.");
       return;
@@ -45,6 +45,17 @@ const App = () => {
 
     // Encontrar el objeto horario seleccionado por su ID
     const horarioSeleccionadoObj = horarios.find(h => h.id === horarioSeleccionado);
+
+    try {
+      await axios.post('http://localhost:8081/api/confirmaciones', {
+        codigo: codigoReserva,
+        fecha: fechaFormateada,
+        horario: horarioSeleccionadoObj.hora
+      });
+      console.log('Confirmación guardada en la base de datos');
+    } catch (error) {
+      console.error('Error al guardar la confirmación:', error);
+    }
 
     navigate("/confirmacion", {
       state: { codigo: codigoReserva, fecha: fechaFormateada, horario: horarioSeleccionadoObj.hora }
