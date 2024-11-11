@@ -11,15 +11,15 @@
   }
   
   .text-box h2 {
-    font-size: 1.5em;
-    color: #555;
+    font-size: 1em;
+    color: black;
     margin-top: 20px;
   }
   
   .text-box p {
-    font-size: 1em;
+    font-size: 0.8em;
     color: #666;
-    margin: 10px 0;
+    margin: 2px 0;
   }
   .section-title {
     cursor: pointer;
