@@ -47,7 +47,7 @@ const App = () => {
     const horarioSeleccionadoObj = horarios.find(h => h.id === horarioSeleccionado);
 
     try {
-      await axios.post('http://localhost:8081/api/confirmaciones', {
+      await axios.get('http://localhost:8080/api/confirmaciones', {
         codigo: codigoReserva,
         fecha: fechaFormateada,
         horario: horarioSeleccionadoObj.hora
