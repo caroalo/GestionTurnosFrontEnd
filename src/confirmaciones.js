@@ -37,11 +37,7 @@ const Confirmaciones = () => {
           {confirmaciones.map((confirmacion) => (
             <tr key={confirmacion.id}>
               <td>{confirmacion.codigo}</td>
-              <td>{new Date(confirmacion.fecha).toLocaleDateString('es-ES', {
-                day: '2-digit',
-                month: '2-digit',
-                year: 'numeric'
-              })}</td>
+              <td>{confirmacion.fecha}</td>
               <td>{confirmacion.horario}</td>
             </tr>
           ))}

@@ -21,13 +21,7 @@ const Confirmacion = () => {
     guardarConfirmacion();
   }, [codigo, fecha, horario]);
 
-  const fechaFormateada = new Date(fecha).toLocaleDateString('es-ES', 
-    { day: '2-digit', 
-        month: '2-digit', 
-        year: 'numeric' });
-
-  const horarioFormateado = String(horario).padStart(5, '0');
-
+  
   return (
     <div>
         <Navbar />
@@ -35,8 +29,8 @@ const Confirmacion = () => {
       <h2>Confirmación de Reserva</h2>
       <p>Gracias por reservar su turno!</p>
       <p><strong>Código de Reserva:</strong> {codigo}</p>
-      <p><strong>Fecha:</strong> {fechaFormateada}</p>
-      <p><strong>Hora:</strong> {horarioFormateado}</p>
+      <p><strong>Fecha:</strong> {fecha}</p>
+      <p><strong>Hora:</strong> {horario}</p>
       </div>
     </div>
   );

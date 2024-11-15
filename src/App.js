@@ -36,20 +36,13 @@ const App = () => {
 
     const codigoReserva = Math.random().toString(36).substring(2, 10).toUpperCase();
 
-    // Formatear la fecha a día-mes-año
-    const fechaFormateada = new Date(fecha).toLocaleDateString('es-ES', {
-      day: '2-digit',
-      month: '2-digit',
-      year: 'numeric'
-    });
-
-    // Encontrar el objeto horario seleccionado por su ID
+       // Encontrar el objeto horario seleccionado por su ID
     const horarioSeleccionadoObj = horarios.find(h => h.id === horarioSeleccionado);
 
     try {
       await axios.get('http://localhost:8080/api/confirmaciones', {
         codigo: codigoReserva,
-        fecha: fechaFormateada,
+        fecha: fecha,
         horario: horarioSeleccionadoObj.hora
       });
       console.log('Confirmación guardada en la base de datos');
@@ -58,7 +51,7 @@ const App = () => {
     }
 
     navigate("/confirmacion", {
-      state: { codigo: codigoReserva, fecha: fechaFormateada, horario: horarioSeleccionadoObj.hora }
+      state: { codigo: codigoReserva, fecha: fecha, horario: horarioSeleccionadoObj.hora }
     });
   };
 

@@ -46,3 +46,25 @@ h1{
     margin-left: 5%;
   } 
   
+  .confirmation-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: Cambria, serif;
+    font-size: small;
+    color: #000;
+  }
+  
+  .confirmation-table th {
+    background-color: #f0f0f0; /* Color de fondo para los encabezados */
+    color: #000; /* Color de letra negro */
+    font-weight: bold;
+    padding: 10px;
+    text-align: left;
+    border-bottom: 2px solid #ccc;
+  }
+  
+  .confirmation-table td {
+    padding: 8px;
+    border-bottom: 1px solid #ddd;
+  }
+  
